@@ -1,0 +1,54 @@
+﻿@page "/models"
+@using Core.Application.Responses
+@using WebUIBlazor.Models.ModelModels
+@using WebUIBlazor.Services
+
+@inject ModelService modelService
+
+<h1>Models</h1>
+
+@if (models == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <ul>
+        @foreach (var model in models.Items)
+        {
+            <li>@model.Name - @model.DailyPrice</li>
+        }
+    </ul>
+    <div class="col-md-12">
+        <div class="row">
+            @foreach (var item in models.Items)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card" style="width: 100%;">
+                        <img class="card-img-top" src="https://mediaservice.audi.com/media/fast/H4sIAAAAAAAAAFvzloG1tIiBOTrayfuvpGh6-m1zJgaGigIGBgZGoDhTtNOaz-I_2DhCHsCEtzEwF-SlMwJZKUycmbmJ6an6QD4_I3taTmV-aUkxO0grT6IZW1LM5FXvttkx5OyX3LxWaWLSLgZWoC7GeUCCWQhI8KUBCU5VBjAJMm8-iLAD8ZksmRkYWCuAjEgGEODjKy3KKUgsSszVK89MKckQ1DAgEgizu7iGOHr6BAMAWEMXeOkAAAA?wid=850" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <p class="card-text">@item.BrandName @item.DailyPrice @item.FuelName  @item.TransmissionName </p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+}
+
+@code {
+    private GetListResponse<ModelListItem> models;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Sayfalama parametrelerini belirleyin
+        int pageIndex = 0;
+        int pageSize = 15;
+
+        // API'den modelleri alın
+        models = await modelService.GetModelsAsync(pageIndex, pageSize);
+    }
+}

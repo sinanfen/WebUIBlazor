@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Core.Application">
+      <HintPath>..\..\RentACar-Core.Packages-UdemyCourse\Core.Application\bin\Debug\net7.0\Core.Application.dll</HintPath>
+    </Reference>
+    <Reference Include="Core.CrossCuttingConcerns">
+      <HintPath>..\..\RentACar-Core.Packages-UdemyCourse\Core.Application\bin\Debug\net7.0\Core.CrossCuttingConcerns.dll</HintPath>
+    </Reference>
+    <Reference Include="Core.Persistence">
+      <HintPath>..\..\RentACar-Core.Packages-UdemyCourse\Core.Application\bin\Debug\net7.0\Core.Persistence.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
